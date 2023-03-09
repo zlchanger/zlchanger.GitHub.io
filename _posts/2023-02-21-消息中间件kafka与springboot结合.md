@@ -133,13 +133,13 @@ description: 实用消息中间件kafka
 
 ### 2.5、消费者（consumer）配置
 
-* 消费者监听可以指定监听的topic以及partition、offset，
+- 消费者监听可以指定监听的topic以及partition、offset，
 比如我们可以监听topic1上的0分区所有消息，topic2的0分区所有消息，1分区offset=8开始的消息
 
-* 或者当我们简单监听topic时，直接使用topics，
+- 或者当我们简单监听topic时，直接使用topics，
 比如我们监听debezium_topic的所有分区，所有消息
 
-* topics与topicPartitions不可同时使用
+- topics与topicPartitions不可同时使用
 
 
     @Component
@@ -160,7 +160,7 @@ description: 实用消息中间件kafka
 
 #### 2.5.1 消费者异常处理（ConsumerAwareListenerErrorHandler）
 
-* 构建一个ConsumerAwareListenerErrorHandler的Bean
+- 构建一个ConsumerAwareListenerErrorHandler的Bean
 
 
     @Bean
@@ -171,7 +171,7 @@ description: 实用消息中间件kafka
         };
     }
 
-* @KafkaListener允许配置errorHandler来定义消费异常的处理
+- @KafkaListener允许配置errorHandler来定义消费异常的处理
 
 
     @KafkaListener(topics = {"xxx_topic"},errorHandler = "errorHandler")
@@ -179,7 +179,7 @@ description: 实用消息中间件kafka
 
 #### 2.5.2 消费者消息过滤（ConcurrentKafkaListenerContainerFactory）
 
-* 定义一个 ConcurrentKafkaListenerContainerFactory 实现过滤规则，setRecordFilterStrategy中true为过滤 (ps: ConcurrentKafkaListenerContainerFactory不仅仅可用于消息过滤配置，比如setAutoStartup设置自启动等。。。)
+- 定义一个 ConcurrentKafkaListenerContainerFactory 实现过滤规则，setRecordFilterStrategy中true为过滤 (ps: ConcurrentKafkaListenerContainerFactory不仅仅可用于消息过滤配置，比如setAutoStartup设置自启动等。。。)
 
 
     @Resource
@@ -198,7 +198,7 @@ description: 实用消息中间件kafka
         return factory;
     }
     
-* @KafkaListener允许配置containerFactory来定义消息过滤
+- @KafkaListener允许配置containerFactory来定义消息过滤
 
     
     @KafkaListener(topics = {"xxx_topic"},containerFactory = "filterContainerFactory")
